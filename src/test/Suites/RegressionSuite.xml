@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Regression Suite" parallel="classes" thread-count="3">
+
+    <listeners>
+        <listener class-name="com.aventstack.chaintest.plugins.ChainTestListener"/>
+    </listeners>
+
+    <test name="Regression Tests">
+
+        <classes>
+
+            <class name="Tests.LoginTest"/>
+            <class name="Tests.InvalidLoginTest"/>
+            <class name="Tests.SearchProductTest"/>
+            <class name="Tests.CartTest"/>
+            <class name="Tests.ProductQuantityTest"/>
+
+        </classes>
+
+    </test>
+
+</suite>

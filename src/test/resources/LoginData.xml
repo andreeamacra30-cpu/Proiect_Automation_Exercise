@@ -1,0 +1,18 @@
+<dataSets>
+
+    <dataSet1>
+        <email>wrong1@test.com</email>
+        <password>wrong123</password>
+    </dataSet1>
+
+    <dataSet2>
+        <email>wrong2@test.com</email>
+        <password>test123</password>
+    </dataSet2>
+
+    <dataSet3>
+        <email>wrong3@test.com</email>
+        <password>password123</password>
+    </dataSet3>
+
+</dataSets>
