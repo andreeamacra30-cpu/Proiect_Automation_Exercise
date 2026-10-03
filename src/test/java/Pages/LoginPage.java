@@ -3,6 +3,7 @@ package Pages;
 import HelperMethods.ElementsMethods;
 import HelperMethods.WaitMethods;
 import Logger.LoggerUtility;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,6 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage {
 
     private WebDriver driver;
+    private JavascriptExecutor js;
     private ElementsMethods elementsMethods;
     private WaitMethods waitMethods;
 
@@ -29,6 +31,7 @@ public class LoginPage {
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
+        this.js = (JavascriptExecutor) driver;
         this.elementsMethods = new ElementsMethods(driver);
         this.waitMethods = new WaitMethods(driver);
 
@@ -55,7 +58,10 @@ public class LoginPage {
                 "Se apasa butonul Login"
         );
 
-        elementsMethods.clickElement(loginButton);
+        js.executeScript(
+                "arguments[0].click();",
+                loginButton
+        );
     }
 
 

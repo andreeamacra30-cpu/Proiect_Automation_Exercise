@@ -1,15 +1,35 @@
 package Tests;
 
+import ObjectData.LoginObject;
 import Pages.HomePage;
 import Pages.LoginPage;
 import SharedData.TestBasePage;
+import XmlData.XmlDataLoader;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.util.Map;
 
 public class LoginTest extends TestBasePage {
 
-    @Test
-    public void loginTest() {
+    @DataProvider(name = "validLoginData")
+    public Object[][] validLoginData() {
+
+        Map<String, LoginObject> data =
+                XmlDataLoader.loadData(
+                        "src/test/resources/ValidLoginData.xml",
+                        LoginObject.class
+                );
+
+        return new Object[][]{
+                {data.get("dataSet1")}
+        };
+    }
+
+
+    @Test(dataProvider = "validLoginData")
+    public void loginTest(LoginObject data) {
 
         HomePage homePage =
                 new HomePage(getDriver());
@@ -20,8 +40,8 @@ public class LoginTest extends TestBasePage {
                 new LoginPage(getDriver());
 
         loginPage.login(
-                "macra.a@gmail.com",
-                "Test@1234"
+                data.getEmail(),
+                data.getPassword()
         );
 
         // Verificam daca utilizatorul este autentificat
